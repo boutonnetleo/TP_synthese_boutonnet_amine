@@ -10,6 +10,5 @@
 #include <unistd.h>
 
 void question1();
-
-#endif //QUESTION1_H
-
+void showString();
+#endif // QUESTION1_H

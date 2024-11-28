@@ -5,10 +5,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#define BUFFER_SIZE 1024
+#include "question1.h"
+#include "question2.h"
+#include "question3.h"
 
-#endif //MAIN_H
-
+#endif // MAIN_H
