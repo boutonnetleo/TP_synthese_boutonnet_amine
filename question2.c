@@ -6,6 +6,7 @@ void question2(){
   int rt;
   int ppid;
   char buffer[BUFFER_SIZE];
+  int status;
 
   while(1){
 
@@ -16,16 +17,18 @@ void question2(){
     if (ppid == 0){
         if(strcmp(buffer,"date")==0){
             write(STDOUT_FILENO,date,strlen(date));
+            exit(0);
         }
         else if (strcmp(buffer,"ls")==0)
         {
             execlp("ls","ls",(char*)NULL);
+            exit(0);
         }
-        
-        break;
+        write(1,buffer,rt-1);
     }
     else{
-    write(1,buffer,rt-1);
+    wait(&status);
+
     }
         write(STDOUT_FILENO,shell,strlen(shell));
   }

@@ -4,8 +4,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#include <time.h>
 
+#include <stdlib.h>
+#include<sys/wait.h>
 #define BUFFER_SIZE 1024
 void question3();
 
