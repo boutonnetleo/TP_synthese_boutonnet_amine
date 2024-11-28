@@ -5,10 +5,10 @@
 void question1(){
   char* welcome="Bienvenue dans le Shell ENSEA. \n";
   char* infos="pour quitter tapez exit \n";
-  char* shell="enseash %%";
+  char* shell="\nenseash %%\n";
   char* bye="Au revoir !\n";
   int rt;
-  char* buffer;
+  char buffer[BUFFER_SIZE];
   write(1,welcome,strlen(welcome));
   write(1,infos,strlen(infos));
     while(1) {
