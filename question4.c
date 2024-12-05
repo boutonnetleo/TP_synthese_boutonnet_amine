@@ -7,7 +7,7 @@ void question4()
     int ppid;
     char buffer[BUFFER_SIZE]; // buffer for transmitting info written on the shell
     int status;
-
+    char * error_message = " ERROR Function not found :";
     while (1)
     {
 
@@ -22,13 +22,14 @@ void question4()
                 showString(bye);
                 exit(2);
             }
-            else if (strcmp(buffer, "ls") == 0)
+            else // if (strcmp(buffer, "ls") == 0)
             {
                 execlp(buffer, buffer, (char *)NULL);
-                exit(0);
+                perror(error_message);
+                exit(EXIT_FAILURE);
             }
             // write(1,buffer,rt-1);//print what is received
-            exit(0);
+            exit(EXIT_SUCCESS);
         }
         else
         {
