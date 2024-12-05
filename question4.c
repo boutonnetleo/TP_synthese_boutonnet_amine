@@ -1,6 +1,5 @@
-#include "question3.h"
-
-void question3()
+#include "question4.h"
+void question4()
 {
     char *shell = "\nenseash %%\n";
     char *bye = "Bye bye ...\n";
@@ -25,7 +24,7 @@ void question3()
             }
             else if (strcmp(buffer, "ls") == 0)
             {
-                execlp("ls", "ls", (char *)NULL);
+                execlp(buffer, buffer, (char *)NULL);
                 exit(0);
             }
             // write(1,buffer,rt-1);//print what is received
@@ -45,4 +44,13 @@ void question3()
             showString(shell); // show the shell console after all operation are executed
         }
     }
+}
+
+void printshell(int status){
+    char* shell="\nenseash ";
+    if (WEXITED(status)){
+        shell=shell+"[exit:"sprintf(W)
+    }
+    showString(shell); 
+
 }
