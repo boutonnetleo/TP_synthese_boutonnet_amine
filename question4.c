@@ -7,7 +7,7 @@ void question4()
     int ppid;
     char buffer[BUFFER_SIZE]; // buffer for transmitting info written on the shell
     int status;
-    char * error_message = " ERROR Function not found :";
+    char *error_message = " ERROR Function not found :";
     while (1)
     {
 
@@ -47,19 +47,24 @@ void question4()
     }
 }
 
-void printshell(int status){
+void printshell(int status)
+{
     char buffer[BUFFER_SIZE];
-    char* shell="\nenseash [%s : %d] %% \n";
-    if (WIFEXITED(status)){
-        if(status != EXIT_NOEXEC){
-            sprintf(buffer,shell,"exit",WEXITSTATUS(status));
-        }else{
-            sprintf(buffer,"\nenseash %%\n");
+    char *shell = "\nenseash [%s : %d] %% \n";
+    if (WIFEXITED(status))
+    {
+        if (status != EXIT_NOEXEC)
+        {
+            sprintf(buffer, shell, "exit", WEXITSTATUS(status));
+        }
+        else
+        {
+            sprintf(buffer, "\nenseash %%\n");
         }
     }
-    else if (WIFSIGNALED(status)){
-        sprintf(buffer,shell,"signal",WSTOPSIG(status));
+    else if (WIFSIGNALED(status))
+    {
+        sprintf(buffer, shell, "signal", WSTOPSIG(status));
     }
-    showString(buffer); 
-
+    showString(buffer);
 }

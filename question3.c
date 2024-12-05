@@ -13,8 +13,7 @@ void question3()
     {
 
         rt = read(STDIN_FILENO, buffer, BUFFER_SIZE);
-        buffer[rt] = '\0';                    // signal that the last bit read is not char(enter) but an end of char
-        buffer[strcspn(buffer, "\n")] = '\0'; // change the linne return to end of char sign
+        buffer[rt-1] = '\0';                    // signal that the last bit read is not char(enter) but an end of char
         ppid = fork();
         if (ppid == 0)
         { // command treatment for the child
