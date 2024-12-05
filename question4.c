@@ -29,7 +29,7 @@ void question4()
                 exit(EXIT_FAILURE);
             }
             // write(1,buffer,rt-1);//print what is received
-            exit(EXIT_SUCCESS);
+            exit(EXIT_NOEXEC);
         }
         else
         {
@@ -39,7 +39,7 @@ void question4()
                 if (WEXITSTATUS(status) == 2)
                 { // if the exit status was 1 (command to quit the shell in input)
                     // then close the programm
-                    break;
+                    exit(EXIT_SUCCESS);
                 }
             }
             printshell(status); // show the shell console after all operation are executed
@@ -51,7 +51,11 @@ void printshell(int status){
     char buffer[BUFFER_SIZE];
     char* shell="\nenseash [%s : %d] %% \n";
     if (WIFEXITED(status)){
-        sprintf(buffer,shell,"exit",WEXITSTATUS(status));
+        if(status != EXIT_NOEXEC){
+            sprintf(buffer,shell,"exit",WEXITSTATUS(status));
+        }else{
+            sprintf(buffer,"\nenseash %%\n");
+        }
     }
     else if (WIFSIGNALED(status)){
         sprintf(buffer,shell,"signal",WSTOPSIG(status));
