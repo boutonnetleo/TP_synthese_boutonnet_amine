@@ -39,7 +39,7 @@ void question3()
                 if (WEXITSTATUS(status) == 2)
                 { // if the exit status was 1 (command to quit the shell in input)
                     // then close the programm
-                    break;
+                    exit(0);
                 }
             }
             showString(shell); // show the shell console after all operation are executed
