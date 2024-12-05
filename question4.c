@@ -41,16 +41,20 @@ void question4()
                     break;
                 }
             }
-            showString(shell); // show the shell console after all operation are executed
+            printshell(status); // show the shell console after all operation are executed
         }
     }
 }
 
 void printshell(int status){
-    char* shell="\nenseash ";
-    if (WEXITED(status)){
-        shell=shell+"[exit:"sprintf(W)
+    char buffer[BUFFER_SIZE];
+    char* shell="\nenseash [%s : %d] %% \n";
+    if (WIFEXITED(status)){
+        sprintf(buffer,shell,"exit",WEXITSTATUS(status));
     }
-    showString(shell); 
+    else if (WIFSIGNALED(status)){
+        sprintf(buffer,shell,"signal",WSTOPSIG(status));
+    }
+    showString(buffer); 
 
 }

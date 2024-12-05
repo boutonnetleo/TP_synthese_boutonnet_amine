@@ -25,11 +25,11 @@ void question3()
             }
             else if (strcmp(buffer, "ls") == 0)
             {
-                execlp("ls", "ls", (char *)NULL);
-                exit(0);
+                execlp(buffer,buffer, (char *)NULL);
+                exit(EXIT_FAILURE);
             }
             // write(1,buffer,rt-1);//print what is received
-            exit(0);
+            exit(EXIT_SUCCESS);
         }
         else
         {
