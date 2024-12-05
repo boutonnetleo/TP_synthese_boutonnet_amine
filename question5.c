@@ -42,7 +42,7 @@ void question5()
             {
                 wait(&status);
                 clock_gettime(CLOCK_REALTIME, &tpsEnd);
-                int time_elapsed = (tpsEnd.tv_sec - tpsStart.tv_sec)* 10e3 + (tpsEnd.tv_nsec - tpsStart.tv_nsec) * 10e-6 ;
+                int time_elapsed = (int) ((tpsEnd.tv_sec - tpsStart.tv_sec)* 1000 + (tpsEnd.tv_nsec - tpsStart.tv_nsec) / 1000000) ;
                 if (WIFEXITED(status))
                 {
                     if (WEXITSTATUS(status) == 2)
@@ -73,7 +73,7 @@ void printshell2(int status,int time)
     }
     else if (WIFSIGNALED(status))
     {
-        sprintf(buffer, shell, "signal", WSTOPSIG(status),time);
+        sprintf(buffer, shell, "signal", WTERMSIG(status),time);
     }
     showString(buffer);
 }
